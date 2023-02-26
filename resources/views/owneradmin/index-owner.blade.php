@@ -10,10 +10,25 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Owner Register</h2>
+                 <!-- Serach start -->
+             <div class="pull-right" style="margin-bottom:10px;">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <form action="/owner-list" method="GET">
+                            <table>
+                                <tr>
+                                    <td><input type="search" id="search" name="search" class="form-control" ></td>
+                                    <td><button type="submit" class="btn btn-secondary">Search</button></td>
+                                    <td><a class="btn btn-info" href="{{ url('/manageusers') }}">Back</a></td>
+                                </tr>
+                            </table>    
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="pull-right" style="margin-bottom:10px;">
-                <a class="btn btn-success" href="{{ url('register-owner') }}">Create New Property Owner</a>
+    <!-- search end -->
             </div>
+
         </div>
     </div>
 

@@ -13,5 +13,10 @@ class Powner extends Model
         return $this->belongsTo(user::class);
     }
 
+    public function package()
+    {
+        return $this->hasMany(package::class);
+    }
+
     protected $fillable = ['fname','lname','email','nic','contact','address','image','password','repassword'];
 }

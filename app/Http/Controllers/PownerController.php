@@ -15,12 +15,17 @@ class PownerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexOwner()
-    {
-        $powners = Powner::latest()->paginate();
-
+    public function indexOwner(Request $request)
+    { 
+        if($request->has('search'))
+        {
+            $powners = Powner::where('email','LIKE','%'.$request->search.'%')->latest()->paginate();
+        }
+        else
+        {
+            $powners = Powner::latest()->paginate();
+        }
         return view('owneradmin.index-owner',compact('powners'));
-
     }
 
     /**

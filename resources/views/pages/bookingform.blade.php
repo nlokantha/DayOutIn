@@ -80,7 +80,8 @@
                             </div>
                             <div><button class="rounded-circle" style="width: 50px; height: 50px;margin-right: 25px; border-color: transparent; border: none; 
                                         background-color: transparent;" alt="Avatar">
-                                        <div style="color: white;" onclick="myfun1()"><i class="fas fa-sign-out-alt fa-2x"></i></div>
+                                    <div style="color: white;" onclick="myfun1()"><i
+                                            class="fas fa-sign-out-alt fa-2x"></i></div>
                                 </button>
                             </div>
                         </div>
@@ -111,91 +112,102 @@
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg" style="margin-top: 25%;">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"
+                                    src="img/about-1.jpg" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s"
+                                    src="img/about-2.jpg">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s"
+                                    src="img/about-3.jpg">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s"
+                                    src="img/about-4.jpg">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form method="post" action="#">
                                 <div class="row g-3">
-                                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                                    <h1 class="mb-5">RESER<span class="text-primary text-uppercase">VATION</span></h1>
-                                </div>
                                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                                        <h6 class="section-title text-center text-primary text-uppercase">Personal Info</h6>
+                                        <h1 class="mb-5">RESER<span class="text-primary text-uppercase">VATION</span>
+                                        </h1>
+                                    </div>
+                                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                                        <h6 class="section-title text-center text-primary text-uppercase">Personal Info
+                                        </h6>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="fname" placeholder="First Name">
+                                            <input type="text" class="form-control" name="fname"
+                                                placeholder="First Name">
                                             <label for="fname">First Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="lname" placeholder="Last Name">
+                                            <input type="text" class="form-control" name="lname"
+                                                placeholder="Last Name">
                                             <label for="lname">Last Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Email">
+                                            <input type="email" class="form-control" name="email" placeholder="Email">
                                             <label for="email">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="nic" placeholder="Your Nic">
+                                            <input type="text" class="form-control" name="nic" placeholder="Your Nic">
                                             <label for="nic">NIC</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="address" placeholder="Your Address">
+                                            <input type="text" class="form-control" name="address"
+                                                placeholder="Your Address">
                                             <label for="address">Address</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="contact" placeholder="Your Contact Number">
+                                            <input type="text" class="form-control" name="contact"
+                                                placeholder="Your Contact Number">
                                             <label for="contact">Contact Number</label>
                                         </div>
                                     </div>
                                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                                            <h6 class="section-title text-center text-primary text-uppercase">Booking Info</h6>
-                                        </div>
+                                        <h6 class="section-title text-center text-primary text-uppercase">Booking Info
+                                        </h6>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-floating date" id="date3" data-target-input="nearest">
-                                            <input type="date" class="form-control datetimepicker-input" id="date" placeholder="date" data-target="#date3" data-toggle="datetimepicker" />
+                                            <input type="date" class="form-control datetimepicker-input" name="date"
+                                                placeholder="date" data-target="#date3" data-toggle="datetimepicker" />
                                             <label for="date">Date</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <select class="form-select" id="adults">
-                                              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>
-                                              <option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option>
-                                              <option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option>
+                                            <select class="form-select" name="adults">
+                                                @for($i=1; $i<10; $i++) <option value="{{$i}}">{{$i}}</option>
+                                                    @endfor
+
                                             </select>
-                                            <label for="adults">Adults</label>
-                                          </div>
+                                            <label for="adults">Adults</label>+
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <select class="form-select" id="childs">
-                                              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>
-                                            </select>
-                                            <label for="childs">Child(Age 05-12)</label>
-                                          </div>
+                                            <input type="number" class="form-control" name="advance" disabled
+                                                value="1000">
+                                            <label for="childs">Advance ammount(Rs.)</label>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
@@ -219,7 +231,8 @@
                             <h4 class="mb-4"><span class="text-primary text-uppercase">Contact us</span>
                             </h4>
                             <div class="position-relative mx-auto" style="max-width: 400px;">
-                                <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <input class="form-control w-100 py-3 ps-4 pe-5" type="text"
+                                    placeholder="Enter your email">
                                 <button type="button"
                                     class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
                             </div>
@@ -229,8 +242,8 @@
             </div>
         </div>
         <!-- Newsletter Start -->
-        
-        
+
+
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
             <div class="container pb-5">
@@ -241,7 +254,8 @@
                                 <h1 class="text-white text-uppercase mb-3">Dayoutinn</h1>
                             </a>
                             <p class="text-white mb-0">
-                                The national emblem of Sri Lanka[1][2][3] is used by the State of Sri Lanka and the Sri Lankan
+                                The national emblem of Sri Lanka[1][2][3] is used by the State of Sri Lanka and the Sri
+                                Lankan
                                 government in connection
                                 with the administration and government of the country</p>
                         </div>
@@ -296,8 +310,3 @@
 </body>
 
 </html>
-
-
-
-
-

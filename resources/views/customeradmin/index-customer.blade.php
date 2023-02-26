@@ -11,9 +11,23 @@
             <div class="pull-left">
                 <h2>Customer Register List</h2>
             </div>
-            <div class="pull-right" style="margin-bottom:10px;">
-                <a class="btn btn-success" href="{{ url('/register-customer') }}">Create New Customer</a>
+           <!-- Serach start -->
+           <div class="pull-right" style="margin-bottom:10px;">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <form action="/customer-list" method="GET">
+                            <table>
+                                <tr>
+                                    <td><input type="search" id="search" name="search" class="form-control" ></td>
+                                    <td><button type="submit" class="btn btn-secondary">Search</button></td>
+                                    <td><a class="btn btn-info" href="{{ url('/manageusers') }}">Back</a></td>
+                                </tr>
+                            </table>    
+                        </form>
+                    </div>
+                </div>
             </div>
+    <!-- search end -->
         </div>
     </div>
 

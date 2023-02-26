@@ -59,7 +59,7 @@
         <div class="container-fluid bg-dark px-0">
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
-                    <a href="{{ Route('welcome') }}"
+                    <a href="/"
                         class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                         <img class="col-md-10" src="{{ asset('img/logo.png') }}">
                     </a>
@@ -69,14 +69,14 @@
                 {{-- {{dd(Auth::user())}} --}}
                 <div class="col-lg-9 d-flex flex-row-reverse">
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-                        <a href="{{ Route('welcome') }}" class="navbar-brand d-block d-lg-none"></a>
+                        <a href="/" class="navbar-brand d-block d-lg-none"></a>
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                             data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="{{ Route('welcome') }}" class="nav-item nav-link active">Home</a>
+                                <a href="/" class="nav-item nav-link active">Home</a>
                                 <a href="{{ Route('packages') }}" class="nav-item nav-link">Packages</a>
                                 @if (Auth::check())
                                     @if (Auth::user()->role_as == 2 )
@@ -94,17 +94,17 @@
                                     </div>
                                 </div>
                                 @endif
-                                <a href="" class="nav-item nav-link">About us</a>
+                                <a href="/aboutus" class="nav-item nav-link">About us</a>
                                 <a href="{{ Route('createContact') }}" class="nav-item nav-link">Contact</a>
                             </div>
                             <div>
                                 @if (Auth::check())
                                     <button class="rounded-circle"
-                                        style="width: 50px; height: 50px;margin-right: 25px; border-color: transparent; border: none;
+                                        style="width: auto; height: 50px;margin-right: 25px; border-color: transparent; border: none;
                                         background-color: transparent;"
                                         alt="Avatar">
                                         <div style="color: white;" onclick="myfun1()"><i
-                                                class="fas fa-sign-out-alt fa-2x"></i></div>
+                                                class="fas fa-user-circle fa-2x"></i><h6 class="text-light text-uppercase">{{Str::limit(Auth::user()->name,10)}}<h6></div>
                                     </button>
                                 @endif
                             </div>
@@ -132,8 +132,7 @@
                             <div class="position-relative mx-auto" style="max-width: 400px;">
                                 <input class="form-control w-100 py-3 ps-4 pe-5" type="text"
                                     placeholder="Enter your email">
-                                <button type="button"
-                                    class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
+                                    <a href="{{ Route('createContact') }}" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</a>
                             </div>
                         </div>
                     </div>
@@ -176,7 +175,7 @@
                             <div class="col-md-6">
                                 <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
                                 <a class="btn btn-link"
-                                    href="{{ Route('welcome') }}>home</a>
+                                    href="/">home</a>
                                 <a class="btn
                                     btn-link" href="{{ Route('booking') }}">booking</a>
                                 <a class="btn btn-link" href="{{ Route('packages') }}">Packages</a>
@@ -244,12 +243,12 @@
                                                                 type="submit">Login</button>
                                                         </div>
 
-                                                        <button class="small" href=""
+                                                        <a class="small" href="{{Route('restlink')}}"
                                                             style="color: #393f81; border: none; background-color: transparent;">Forgot
-                                                            password?</button><br>
-                                                        <button class="small" href="loginform.html"
+                                                            password?</a><br>
+                                                        <a class="small" href="#"
                                                             style="color: #393f81; border: none; background-color: transparent;">Don't
-                                                            have an account? </button>
+                                                            have an account? </a>
                                                     </form>
 
                                                 </div>
@@ -270,9 +269,24 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4>Logout <i class="fa fa-lock"></i></h4>
+                        <h4>My Profile <i class="fa fa-user-circle"></i></h4>
                     </div>
-                    <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log out?
+                    <div class="card mb-5">
+                        <div class="card-body text-center text-black">
+                        @if (Auth::check())
+                            @if (Auth::user()->role_as == 2 )
+                            <h5>
+                            <a href="{{ Route('PownerDashboard') }}" class="">Show My Activities</a>
+                            </h5>
+                            @endif
+
+                            @if (Auth::user()->role_as == 0 )
+                            <h5>
+                            <a href="{{ route('CustomerDashboard') }}" class="">Show My Activities</a>
+                            </h5>
+                            @endif
+                        @endif
+                        </div>
                     </div>
                     <div class="modal-footer"><a href="{{ route('logout') }}"
                             onclick="event.preventDefault();

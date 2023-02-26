@@ -2,10 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PownerController;
 use App\Http\Controllers\listingController;
-
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,33 +50,51 @@ Route::get('/contact-list', [ContactController::class, 'indexContact'])->name('i
 Route::get('/show-contact/{contact}', [ContactController::class, 'showContact'])->name('showContact');
 Route::post('/store-contact', [ContactController::class, 'storeContact'])->name('storeContact');
 
+//Password reset Routes
+Route::get('/resetLink', function () { return view('auth.passwords.resetLinkSend');})->name('restlink');
+Route::post('/passwordReset', [ForgotPasswordController::class, 'password_reset'])->name('password.linkreset');
+Route::get('/password/resets/{remember_token}', [ForgotPasswordController::class, 'Show_reset_form'])->name('password.showForm');
+Route::post('/password/changepassword', [ForgotPasswordController::class, 'Change_password'])->name('password.changepw');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/manageusers', function () { return view('admin.manage-users');})->name('manage-users');
 });
+
+// Route::prefix('auth')->middleware(['auth'])->group(function(){
+//     Route::post('/bookingform', [BookingController::class, 'index'])->name('booking1');
+
+//     //order route
+
+// });
+
+Route::group(['middleware' => ['auth']], function() {
+
+    //Route for details of packages
+
+Route::get('/package_details/{id}', [BookingController::class, 'BookingView']);
+});
+
+Route::Post('/order/{id}', [OrdersController::class,'CreateOrder'])->name('orderstore');
 
 //****only property owner can access this routes*****
 
-Route::prefix('admin')->middleware(['auth','isOwner'])->group(function(){
-    Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/manageusers', function () { return view('admin.manage-users');})->name('manage-users');
+Route::prefix('Owner')->middleware(['auth','isOwner'])->group(function(){
+    Route::resource('package', PackageController::class , ['names' => ['index' => 'package', 'store' => 'package.store']]);
 });
 //****end of property owner's routes****
 
-Route::get('/packages', function () {
-    return view('pages.packages');
-})->name('packages');
+
+Route::resource('/packages', PackageController::class , ['names' => ['index' => 'packages']]);
 
 
 Route::get('/listing', function () {
@@ -79,14 +105,28 @@ Route::get('/booking', function () {
     return view('pages.booking');
 })->name('booking');
 
-Route::get('/bookingform', function () {
-    return view('pages.bookingform');
-})->name('bookingform');
 
-Route::get('/bookingform', function () {
-    return view('pages.bookingform');
-})->name('bookingform');
+Route::get('/CustomerDashboard', function () {
+    return view('pages.customerDashboard');
+})->name('CustomerDashboard');
 
-Route::get('/manageusers', function () {
-    return view('admin.manage-users');
-})->name('manage-users');
+
+
+//Reviews
+
+Route::get('/review', [ReviewsController::class, 'createReview'])->name('createReview');
+Route::get('/', [ReviewsController::class, 'indexReview'])->name('indexReview');
+Route::post('/store-review', [ReviewsController::class, 'storeReview'])->name('storeReview');
+
+Route::get('/PownerDashboard', [UserDashboardController::class, 'PownerListings'])->name('PownerDashboard');
+
+Route::get('/CustomerDashboard', [UserDashboardController::class, 'CustomerOrders'])->name('CustomerDashboard');
+
+Route::post('/Paid', [UserDashboardController::class, 'forCustomerDashboard'])->name('forCustomerDashboard');
+
+//for invoice
+
+Route::get('/invoice', function () {
+    return view('pages.invoice');
+});
+

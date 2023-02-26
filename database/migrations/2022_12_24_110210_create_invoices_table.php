@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained();
+            $table->foreignId('powner_id')->constrained();
+            $table->foreignId('package_id')->constrained();
+            $table->foreignId('order_id')->constrained();
+            $table->string('status'); 
             $table->timestamps();
         });
     }
