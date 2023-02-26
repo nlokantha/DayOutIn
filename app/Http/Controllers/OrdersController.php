@@ -27,6 +27,7 @@ class OrdersController extends Controller
         ]);
         $customer_id = Customer::where('user_id', Auth::user()->id)->get('customers.id');
 
+        // dd($request);
         
 
         $order = new Order;
@@ -44,11 +45,14 @@ class OrdersController extends Controller
         $order->customer_id =  $customer_id[0]->id;
         $order->contact = $request->contact;
         
-
+        
         $order->save();
         $orderId = $order->id;
         $OrderDetails = Order::where('id', $orderId)->get();
         $package = Package::where('id', $pkgId)->get();
+        $package[0]->availability = $package[0]->availability - $request->adults;
+        $package[0]->save();
+        
         return view('pages.payment',compact('OrderDetails','package'));
     }
 }

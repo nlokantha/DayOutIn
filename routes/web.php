@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\FilterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +75,6 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 //     Route::post('/bookingform', [BookingController::class, 'index'])->name('booking1');
 
 //     //order route
-
 // });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -95,6 +95,7 @@ Route::prefix('Owner')->middleware(['auth','isOwner'])->group(function(){
 
 
 Route::resource('/packages', PackageController::class , ['names' => ['index' => 'packages']]);
+Route::post('/filter', [FilterController::class , 'index'])->name('filter');
 
 
 Route::get('/listing', function () {

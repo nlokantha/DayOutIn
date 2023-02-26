@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Reviews;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Powner;
+use App\Models\Package;
+use App\Models\Photo;
 
 class ReviewsController extends Controller
 {
@@ -14,8 +19,15 @@ class ReviewsController extends Controller
      */
     public function indexReview()
     {
+        $packages = DB::table('packages')
+        ->join('photos', 'packages.id', '=', 'photos.package_id')
+        ->select('packages.*', 'photos.*')
+        ->groupBy ('packages.id')
+        ->orderBy('packages.updated_at','desc')
+        ->take(3)
+        ->get();
         $reviews = Reviews::latest()->paginate();
-        return view('welcome',compact('reviews'));
+        return view('welcome',compact('reviews','packages'));
     }
 
     /**

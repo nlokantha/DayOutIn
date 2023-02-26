@@ -128,7 +128,7 @@
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <select class="form-select" name="adults" id="persons">
-                                                @for($i=1; $i<=$packages->availability; $i++) <option value="{{$i}}">{{$i}}</option>
+                                                @for($i=1; $i<=$packages->availability; $i++) <option  value="{{$i}}">{{$i}}</option>
                                                     @endfor
 
                                             </select>
@@ -168,33 +168,22 @@
                     </div>
                     </div>
                     <div class="col-lg-6 p-0 order-lg-5 order-md-5 col-md-6 align-items-center mt-2 mb-4">
-                        <div class="carousel-inner" style="margin-top:10px">
-                            <div class="carousel-item active">
-                                <img class="w-100" src="{{asset('img/gallery-img1.jpg')}}" alt="Image" style="height:500px">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($photos as $photo)
+                                <div class="carousel-item active">
+                                <img src="{{ asset('product_images/'.$photo->image) }}" class="d-block w-100" alt="...">
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="w-100" src="{{asset('img/gallery-img1.jpg')}} }}" alt="Image" style="height:500px">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="w-100" src="{{asset('img/gallery-img1.jpg')}}" alt="Image" style="height:500px">
-                                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                    
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                         </div>
                     </div>
                 </div>

@@ -16,30 +16,33 @@
             <div class="bg-white shadow" style="padding: 35px;">
                 <div class="row align-items-center">
                     <div class="col">
+                        <form method="post" action="{{Route('filter')}}" enctype="multipart/form-data"> @csrf
+                            
                         <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <div class="date" id="date2" data-target-input="nearest">
-                                    <input type="date" class="form-control date" />
+                                <div class="col-md-4">
+                                    <div class="date" id="date2" data-target-input="nearest" name="date">
+                                        <input type="date" class="form-control date"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select">
-                                    <option selected href="{{ Route('booking') }}">VILLA</option>
-                                    <option value="1" href="{{ Route('booking') }}">HOTEL</option>
+                                <div class="col-md-3">
+                                <select class="form-select" name="type" placeholder="Type">
+                                    <option selected value="Villa" >VILLA</option>
+                                    <option value="Hotel">HOTEL</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <select class="form-select">
-                                    <option selected>LOCATION</option>
-                                    <option value="1">GALLE</option>
-                                    <option value="2">MATARA</option>
-                                    <option value="3">HIKKADUWA</option>
+                                <select class="form-select" name="location" placeholder="Location">
+                                    <option value="GALLE">GALLE</option>
+                                    <option value="MATARA">MATARA</option>
+                                    <option value="HIKKADUWA">HIKKADUWA</option>
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-primary w-100">Submit</button>
+                                <button class="btn btn-primary w-100" type="submit">Filter</button>
                             </div>
                         </div>
+                        </form>
+                            
 
 
                     </div>
@@ -111,3 +114,4 @@
     </div>
     <!-- Room End -->
 @endsection
+

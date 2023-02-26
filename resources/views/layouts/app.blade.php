@@ -118,7 +118,6 @@
 
 
 
-
         @yield('content')
 
         <!-- Newsletter Start -->

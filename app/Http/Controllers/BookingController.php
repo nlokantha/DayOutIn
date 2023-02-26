@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Powner;
+use App\Models\Photo;
 
 
 class BookingController extends Controller
@@ -17,6 +18,7 @@ class BookingController extends Controller
     public function BookingView($id)
 {
     $packages = Package::find($id);
+    $photos = Photo::where('package_id',$id)->get();
     $customer = auth()->user()->customer;
     
     if (!$customer) {
@@ -24,7 +26,7 @@ class BookingController extends Controller
         return back()->with('error','You are not a customer');
     }
     
-    return view('pages.booking', compact('packages', 'customer'));
+    return view('pages.booking', compact('packages', 'customer','photos'));
 }
 
 
